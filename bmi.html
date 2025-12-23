@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>BMI Calculator | Nutrattitude</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<header>
+  <h1>BMI Calculator</h1>
+  <p>Understand your body better</p>
+</header>
+
+<nav>
+  <div class="nav-top">
+    <div class="nav-marquee">
+      <span>
+        ⚖️ Check BMI • 🥗 Get nutrition guidance • 💚 Small steps matter
+      </span>
+    </div>
+    <div class="menu-toggle" onclick="toggleMenu()">☰</div>
+  </div>
+
+  <div class="nav-links" id="navLinks">
+    <a href="index.html">Home</a>
+    <a href="about.html">About</a>
+    <a href="services.html">Services</a>
+    <a href="appointment.html">Appointment</a>
+    <a href="bmi.html">BMI Calculator</a>
+    <a href="contact.html">Contact</a>
+  </div>
+</nav>
+
+<section>
+  <div class="card">
+    <p>
+      BMI (Body Mass Index) is a screening tool used to assess whether
+      your weight is appropriate for your height. It does not measure
+      body fat directly but gives a general idea.
+    </p>
+
+    <form onsubmit="calcBMI(); return false;">
+      <input id="age" type="number" placeholder="Age" required>
+
+      <select id="gender">
+        <option>Male</option>
+        <option>Female</option>
+      </select>
+
+      <input id="height" placeholder="Height (cm)" required>
+      <input id="weight" placeholder="Weight (kg)" required>
+
+      <button>Calculate BMI</button>
+    </form>
+
+    <div id="result"></div>
+  </div>
+</section>
+
+<footer>
+  <p>© 2025 Nutrattitude</p>
+  <div class="footer-menu">
+    <a href="index.html">Home</a>
+    <a href="appointment.html">Appointment</a>
+    <a href="contact.html">Contact</a>
+  </div>
+</footer>
+
+<script>
+function toggleMenu(){
+  document.getElementById("navLinks").classList.toggle("show");
+}
+
+function calcBMI(){
+  let bmi = (weight.value / ((height.value/100) ** 2)).toFixed(1);
+  let msg = bmi < 18.5 ? "Underweight – focus on nourishing foods."
+          : bmi < 25 ? "Normal – maintain balanced eating."
+          : bmi < 30 ? "Overweight – gradual fat loss advised."
+          : "Obese – professional guidance recommended.";
+
+  result.innerHTML = `
+    <p><b>Your BMI:</b> ${bmi}</p>
+    <p>${msg}</p>
+    <a class="btn" href="https://wa.me/918105110581">
+      Consult Dt. Ume Hani
+    </a>
+  `;
+}
+</script>
+
+</body>
+</html>
